@@ -1,5 +1,7 @@
 from replit import db
 
+import sys
+
 from art import tprint
 import os
 tprint("H O P C h e s s", "Boxing")
@@ -235,20 +237,20 @@ print(" + 0  |  1  |  2  |  3  |  4  |  5  |  6  |  7 \n 0 \n - \n 1\n -  \n 2\n
 
 
 while True:
-  #win check for light
+
   a = 8
   y = 8
+  
+  #win check for light
   for i in range (len(board)):
     if "♛" not in board[i]:
       a = a - 1
-      if a == 0:
-        print("game over")
-        print("light wins")
-        break
-      else:
-        None
-    else:
-        None
+  
+  if a == 0:
+    print("game over")
+    print("light wins")
+    print("congrats " + lightPlayer[0])
+    break
   
   print("Its " + darkPlayer[0] + " turn to move(DARK)")
   
@@ -286,21 +288,19 @@ while True:
   for row in board:
     print(row)
        
-  #~~~~~~~~~~Light side~~~~~~~~~~~~~~~~~~~~~
+
 
 
   #win check for dark
   for i in range (len(board)):
     if "♕" not in board[i]:
-      y = y - 1
-      if y == 0:
-        print("game over")
-        print("dark wins")
-        break
-      else:
-        None
-    else:
-      None
+      a = a - 1
+  
+  if a == 0:
+    print("game over")
+    print("dark wins")
+    print("congrats " + darkPlayer[0])
+    break
 
   print("Its " + lightPlayer[0] + " turn to move(LIGHT)")
   
@@ -334,6 +334,3 @@ while True:
   
   for row in board:
       print(row)
-  
-  
-  
