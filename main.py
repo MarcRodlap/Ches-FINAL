@@ -27,7 +27,7 @@ def NameSelection():
   if playerOne in darkPlayer:
     lightPlayer.append(playerTwo)
     print(playerOne + " is playing the dark pieces and going first")
-    print(playerTwo + " is playing thelight pieces and is going second")
+    print(playerTwo + " is playing the light pieces and is going second")
   else:
     lightPlayer.append(playerOne)
     print(playerTwo + " is playing the dark pieces and going first")
@@ -244,9 +244,9 @@ while True:
   #win check for light
   for i in range (len(board)):
     if "♛" not in board[i]:
-      a = a - 1
+      y = y - 1
   
-  if a == 0:
+  if y == 0:
     print("game over")
     print("light wins")
     print("congrats " + lightPlayer[0])
@@ -265,7 +265,13 @@ while True:
   movingX = int(input("input X coordinate that you would like to move to: "))
   movingY = int(input("input Y coordinate that you would like to move to: "))
     
-    
+  #stores all the moves of the game in txt.file database
+  file1 = open("txt.file","a")
+  L = ["darkPlayer moved " + board[placeY][placeX] + " from (" + str(placeX) + "," + str(placeY) +") to (" + str(movingX) + "," + str(movingY) +")" ] 
+  file1.write("\n ~~~~~~~~~~ \n")
+  file1.writelines(L)
+  file1.close()
+
   #since dark moves first these if statements will check that you're moving a dark piece
   if board[placeY][placeX]== "♟":
     board = movePawn(board, "Black", (placeY, placeX), (movingY, movingX))
@@ -287,9 +293,8 @@ while True:
       
   for row in board:
     print(row)
-       
 
-
+  
 
   #win check for dark
   for i in range (len(board)):
@@ -309,10 +314,16 @@ while True:
   
   movingX = int(input("input X coordinate that you would like to move to: "))
   movingY = int(input("input Y coordinate that you would like to move to: "))
+
   
+  file1 = open("txt.file","a")
+  L = ["lightPlayer moved "+  board[placeY][placeX] + " from (" + str(placeX) + "," + str(placeY) +") to (" + str(movingX) + "," + str(movingY) +")" ] 
+  file1.write("\n ~~~~~~~~~~ \n")
+  file1.writelines(L)
+  file1.close()
+
   
   #since light moves second these if statements will check that you're moving a light piece
-  
   if board[placeY][placeX]== "♙":
     board = movePawn(board, "White", (placeY, placeX), (movingY, movingX))
   
@@ -334,3 +345,8 @@ while True:
   
   for row in board:
       print(row)
+
+
+#asks if youd like to save the moves during the game
+file1 = open("txt.file","r+")
+file1.write("~~~~~~~~~~~~~~~~~New Game~~~~~~~~~~~~~~~~~~")
