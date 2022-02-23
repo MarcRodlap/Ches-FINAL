@@ -347,6 +347,7 @@ while True:
       print(row)
 
 
-#asks if youd like to save the moves during the game
-file1 = open("txt.file","r+")
-file1.write("~~~~~~~~~~~~~~~~~New Game~~~~~~~~~~~~~~~~~~")
+#sets a barrier in textfile for a new games moves
+file1 = open("txt.file","a")
+file1.write("\n ~~~~~~~~~~~~~~~~~New Game~~~~~~~~~~~~~~~~~~ \n")
+file1.close()
