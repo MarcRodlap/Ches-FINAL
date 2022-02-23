@@ -1,7 +1,3 @@
-from replit import db
-
-import sys
-
 from art import tprint
 import os
 tprint("H O P C h e s s", "Boxing")
